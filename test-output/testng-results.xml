@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-11-30T10:48:19 IST" name="Suite" finished-at="2023-11-30T10:55:15 IST" duration-ms="416102">
+    <groups>
+    </groups>
+    <test started-at="2023-11-30T10:48:19 IST" name="OrangeHRM" finished-at="2023-11-30T10:55:15 IST" duration-ms="416102">
+      <class name="tests.AdminFlow">
+        <test-method signature="adminmenuflow()[pri:0, instance:tests.AdminFlow@76b1e9b8]" started-at="2023-11-30T10:48:19 IST" name="adminmenuflow" finished-at="2023-11-30T10:55:15 IST" duration-ms="416044" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- adminmenuflow -->
+      </class> <!-- tests.AdminFlow -->
+    </test> <!-- OrangeHRM -->
+  </suite> <!-- Suite -->
+</testng-results>

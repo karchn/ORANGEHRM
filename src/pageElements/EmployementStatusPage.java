@@ -1,0 +1,62 @@
+package pageElements;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.time.Duration;
+import java.util.Properties;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class EmployementStatusPage {
+
+	WebDriver driver;
+	public EmployementStatusPage(WebDriver driverhere) {
+		
+		this.driver=driverhere;
+		PageFactory.initElements(driver, this);
+	}
+
+	@FindBy(xpath="(//span[@class='oxd-topbar-body-nav-tab-item'])[2]")
+	WebElement click_job;
+	
+	@FindBy(xpath="//button[@class='oxd-button oxd-button--medium oxd-button--secondary']")
+	WebElement clickonadd;
+	
+	@FindBy(xpath="//button[@type='submit']")
+	WebElement savebutton;
+	
+	@FindBy(xpath="//a[text()='Employment Status']/parent::li")
+	WebElement Employementstatus;
+	
+	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[2]/input")
+	WebElement Emplyementstatus_name;
+	
+	public JobcategoriesPage Employement_Statuspage() throws IOException {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+		
+		try {
+		click_job.click();
+		Employementstatus.click();
+		clickonadd.click();
+		Emplyementstatus_name.click();
+		
+		Properties prop = new Properties();// this method is already there in util class
+	    FileInputStream fs =new FileInputStream(System.getProperty("user.dir")+("\\src\\testData\\GlobalInput.properties"));
+	    prop.load(fs);
+	    String Employement_status = prop.getProperty("Employement_status");				
+	    Emplyementstatus_name.sendKeys(Employement_status);
+	    
+	    savebutton.click();
+		}
+		catch(Exception e) {
+			System.out.println("In the Exception block of Employement_Statuspage");
+			System.out.println("Employement_Status not getting added ");
+		}
+	    JobcategoriesPage jc = new JobcategoriesPage(driver);
+	    return jc;
+		}
+		
+}
