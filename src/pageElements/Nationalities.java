@@ -14,7 +14,7 @@ public class Nationalities extends AbstractMethods {
 
 	WebDriver driver;
 	public Nationalities(WebDriver driverhere) {
-		
+		super(driverhere);
 		this.driver=driverhere;
 		PageFactory.initElements(driver, this);
 	}
@@ -34,7 +34,7 @@ public class Nationalities extends AbstractMethods {
 	By addnationalityname1 = By.xpath("(//input[@class='oxd-input oxd-input--active'])[2]");
 	
 	public Corporate_BrandingPage nationalities() throws IOException {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+		implicitlywaitmethod();
 		Properties prop = new Properties();// this method is already there in util class
 	    FileInputStream fs =new FileInputStream(System.getProperty("user.dir")+("\\src\\testData\\GlobalInput.properties"));
 	    prop.load(fs);
