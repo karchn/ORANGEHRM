@@ -15,7 +15,7 @@ public class Corporate_BrandingPage extends AbstractMethods {
 
 	WebDriver driver;
 	public Corporate_BrandingPage(WebDriver driverhere) {
-		
+		super(driverhere);
 		this.driver=driverhere;
 		PageFactory.initElements(driver, this);
 	}
@@ -52,7 +52,7 @@ public class Corporate_BrandingPage extends AbstractMethods {
 	By add_LoginBanner1 = By.xpath("(//div[@class='oxd-file-button'])[3]");
 	
 	public Email_Configuration corporateBrandingPage() throws IOException, InterruptedException {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+		implicitlywaitmethod();
 		Properties prop = new Properties();// this method is already there in util class
 	    FileInputStream fs =new FileInputStream(System.getProperty("user.dir")+("\\src\\testData\\GlobalInput.properties"));
 	    prop.load(fs);
