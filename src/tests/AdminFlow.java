@@ -109,7 +109,7 @@ public class AdminFlow extends Basetest{
 		lang = lc.localization();
 		mc=lang.language_pakage();
 		rc=mc.module();
-		ldap= rc.outhClient_registration();
+		ldap= rc.oauthClient_registration();
 		cs=ldap.config();
 	       
        	@Test(dependsOnMethods={"adminmenuflow","jobpageflow","Organizationflow","qualificationflow","nationalityflow","corporate_brandingflow","configurationflow"})
