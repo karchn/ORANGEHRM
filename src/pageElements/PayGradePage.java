@@ -14,7 +14,7 @@ public class PayGradePage extends AbstractMethods{
 	WebDriver driver;
 
 	public PayGradePage(WebDriver driverhere) {
-
+                super(driverhere);
 		this.driver = driverhere;
 		PageFactory.initElements(driver, this);
 	}
