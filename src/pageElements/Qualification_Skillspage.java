@@ -10,11 +10,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Qualification_Skillspage {
+public class Qualification_Skillspage extends AbstractMethods {
 
 	WebDriver driver;
 	public Qualification_Skillspage(WebDriver driverhere) {
-		
+		super(driverhere);
 		this.driver=driverhere;
 		PageFactory.initElements(driver, this);
 	}
@@ -28,7 +28,7 @@ public class Qualification_Skillspage {
 	@FindBy(xpath="//button[@class='oxd-button oxd-button--medium oxd-button--secondary']")
 	WebElement addbutton;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[2]/input")
+	@FindBy(xpath="(//input[@class='oxd-input oxd-input--active'])[2]")
 	WebElement addname;
 	
 	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/div/div[2]/textarea")
@@ -36,20 +36,23 @@ public class Qualification_Skillspage {
 	
 	@FindBy(xpath="//button[@type='submit']")
 	WebElement saveclick;
+
+	By click_Qualifications1 = By.xpath("(//span[@class='oxd-topbar-body-nav-tab-item'])[4]");
+	By addname1 = By.xpath("(//input[@class='oxd-input oxd-input--active'])[2]");
 	
 	public Qualification_EducationPage addskills() throws IOException, InterruptedException {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+		implicitlywaitmethod();
 		Properties prop = new Properties();// this method is already there in util class
 	    FileInputStream fs =new FileInputStream(System.getProperty("user.dir")+("\\src\\testData\\GlobalInput.properties"));
 	    prop.load(fs);
 	    
 	    try {
-	    	Thread.sleep(4000);
+	       Wait_Till_Link_Is_Clickable(click_Qualifications1);
 		click_Qualifications.click();
 		clickSkills.click();
 		addbutton.click();
 		
-		Thread.sleep(2000);
+		 Wait_Till_Link_Is_Clickable(addname1);
 		 String add_skill_name = prop.getProperty("add_skill_name");				
 		 addname.sendKeys(add_skill_name);
 		 
