@@ -58,7 +58,7 @@ public class WorkShiftPage extends AbstractMethods {
 	@FindBy(xpath = "//input[@class='oxd-input oxd-input--active oxd-time-minute-input-text']")
 	WebElement Endingtime_minutes;
 
-	public GeneralInfoPage Work_Shifts(String time, String time1) throws IOException, InterruptedException {
+	public GeneralInfoPage work_Shifts(String time, String time1) throws IOException, InterruptedException {
 		implicitlywaitmethod();
 
 		try {
