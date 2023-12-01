@@ -14,7 +14,7 @@ public class JobTitlepage {
 	WebDriver driver;
 
 	public JobTitlepage(WebDriver driverhere) {
-
+                super(driverhere);
 		this.driver = driverhere;
 		PageFactory.initElements(driver, this);
 	}
@@ -35,7 +35,7 @@ public class JobTitlepage {
 	WebElement savebutton;
 
 	public PayGradePage jobtitle() throws IOException, InterruptedException {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+		implicitlywaitmethod();
 
 		try {
 		click_job.click();
