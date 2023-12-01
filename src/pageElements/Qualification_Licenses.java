@@ -28,13 +28,13 @@ public class Qualification_Licenses extends AbstractMethods{
 	@FindBy(xpath="//button[@class='oxd-button oxd-button--medium oxd-button--secondary']")
 	WebElement addbutton;
 	
-	@FindBy(xpath="//input[@class='oxd-input oxd-input--active']")
+	@FindBy(xpath="(//input[@class='oxd-input oxd-input--active'])[2]")
 	WebElement addlicensesname;
 	
 	@FindBy(xpath="//button[@type='submit']")
 	WebElement saveclick;
 
-	By addlicensesname1= By.xpath("//input[@class='oxd-input oxd-input--active']");
+	By addlicensesname1= By.xpath("(//input[@class='oxd-input oxd-input--active'])[2]");
 	
 	public Qualification_Languages licensespage() throws IOException {
 		implicitlywaitmethod();
