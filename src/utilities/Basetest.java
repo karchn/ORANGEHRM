@@ -33,13 +33,8 @@ public class Basetest {
 	public LandingPage LaunchApplication() throws IOException {
 		driver=intializebrowser();
 		LandingPage lp = new LandingPage(driver);
-		lp.GoTo();
+		lp.goTo();
 		return lp;
 	}
-	
-//	@AfterMethod
-//	public void CloseBrowser() {
-//		
-//		driver.quit();
-//	}
+
 }
