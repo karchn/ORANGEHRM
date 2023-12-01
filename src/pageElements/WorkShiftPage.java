@@ -12,12 +12,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class WorkShiftPage {
+public class WorkShiftPage extends AbstractMethods {
 
 	WebDriver driver;
 
 	public WorkShiftPage(WebDriver driverhere) {
-
+                super(driverhere)
 		this.driver = driverhere;
 		PageFactory.initElements(driver, this);
 	}
@@ -34,16 +34,16 @@ public class WorkShiftPage {
 	@FindBy(xpath = "//a[text()='Work Shifts']/parent::li")
 	WebElement WorkShifts;
 
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div/div/div[2]/input")
+	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[2]")
 	WebElement WorkShifts_name;
 
 	@FindBy(xpath = "(//i[@class='oxd-icon bi-clock oxd-time-input--clock'])[1]")
 	WebElement workinghours_from;
 
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/div/div[1]/div/div[2]/div/div[2]/div[1]/input")
+	@FindBy(xpath = "//input[@class='oxd-input oxd-input--active oxd-time-hour-input-text']")
 	WebElement startingtime_hours;
 
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/div/div[1]/div/div[2]/div/div[2]/div[3]/input")
+	@FindBy(xpath = "//input[@class='oxd-input oxd-input--active oxd-time-minute-input-text']")
 	WebElement startingtime_minutes;
 
 	@FindBy(xpath = "//input[@name='pm']")
@@ -52,14 +52,14 @@ public class WorkShiftPage {
 	@FindBy(xpath = "(//i[@class='oxd-icon bi-clock oxd-time-input--clock'])[2]")
 	WebElement workinghours_to;
 
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/div/div[2]/div/div[2]/div/div[2]/div[1]/input")
+	@FindBy(xpath = "//input[@class='oxd-input oxd-input--active oxd-time-hour-input-text']")
 	WebElement Endingtime_hours;
 
-	@FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/div/div[2]/div/div[2]/div/div[2]/div[3]/input")
+	@FindBy(xpath = "//input[@class='oxd-input oxd-input--active oxd-time-minute-input-text']")
 	WebElement Endingtime_minutes;
 
 	public GeneralInfoPage Work_Shifts(String time, String time1) throws IOException, InterruptedException {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+		implicitlywaitmethod();
 
 		try {
 		click_job.click();
@@ -80,14 +80,14 @@ public class WorkShiftPage {
 
 		startingtime_hours.sendKeys(Keys.CONTROL + "a");
 		startingtime_hours.sendKeys(Keys.DELETE);
-		Thread.sleep(2000);
+		
 		String workinghours_fromtimehrs = prop.getProperty("workinghours_fromtimehrs");
 		startingtime_hours.sendKeys(workinghours_fromtimehrs);
 
 		startingtime_minutes.sendKeys(Keys.ARROW_RIGHT);
 		startingtime_minutes.sendKeys(Keys.CONTROL + "a");
 		startingtime_minutes.sendKeys(Keys.DELETE);
-		Thread.sleep(2000);
+		
 		String workinghours_fromtimemin = prop.getProperty("workinghours_fromtimemin");
 		startingtime_minutes.sendKeys(workinghours_fromtimemin);
 
@@ -99,14 +99,14 @@ public class WorkShiftPage {
 		Endingtime_hours.sendKeys(Keys.ARROW_RIGHT);
 		Endingtime_hours.sendKeys(Keys.CONTROL + "a");
 		Endingtime_hours.sendKeys(Keys.DELETE);
-		Thread.sleep(2000);
+		
 		String workinghours_totimehrs = prop.getProperty("workinghours_totimehrs");
 		Endingtime_hours.sendKeys(workinghours_totimehrs);
 
 		Endingtime_minutes.sendKeys(Keys.ARROW_RIGHT);
 		Endingtime_minutes.sendKeys(Keys.CONTROL + "a");
 		Endingtime_minutes.sendKeys(Keys.DELETE);
-		Thread.sleep(2000);
+		
 		String workinghours_totimemin = prop.getProperty("workinghours_totimemin");
 		Endingtime_minutes.sendKeys(workinghours_totimemin);
 
