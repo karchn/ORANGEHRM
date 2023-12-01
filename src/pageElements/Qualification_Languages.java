@@ -28,13 +28,13 @@ public class Qualification_Languages extends AbstractMethods {
 	@FindBy(xpath="//button[@class='oxd-button oxd-button--medium oxd-button--secondary']")
 	WebElement addbutton;
 	
-	@FindBy(xpath="//input[@class='oxd-input oxd-input--active']")
+	@FindBy(xpath="(//input[@class='oxd-input oxd-input--active'])[2]")
 	WebElement addlanguage;
 	
 	@FindBy(xpath="//button[@type='submit']")
 	WebElement saveclick;
 	
-	By addlanguage1 = By.xpath("//input[@class='oxd-input oxd-input--active']");
+	By addlanguage1 = By.xpath("(//input[@class='oxd-input oxd-input--active'])[2]");
 	
 	public Qualification_Membership languagepage() throws IOException {
 		implicitlywaitmethod();
