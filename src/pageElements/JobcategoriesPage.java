@@ -34,7 +34,7 @@ public class JobcategoriesPage {
 	@FindBy(xpath="(//input[@class='oxd-input oxd-input--active'])[2]")
 	WebElement Jobcategories_name;
 	
-	public WorkShiftPage Job_Categories() throws IOException {
+	public WorkShiftPage job_Categories() throws IOException {
 		implicitlywaitmethod();
 		
 		try {
