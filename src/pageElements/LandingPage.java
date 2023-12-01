@@ -21,7 +21,7 @@ public class LandingPage extends AbstractMethods {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void GoTo() throws IOException {
+	public void goTo() throws IOException {
 		Properties prop = new Properties();// this method is already there in util class
 		FileInputStream fs = new FileInputStream(
 				System.getProperty("user.dir") + ("\\src\\testData\\GlobalInput.properties"));
