@@ -10,36 +10,38 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class RegisterOAuth_Client {
+public class RegisterOAuth_Client extends AbstractMethods{
 
 	WebDriver driver;
 	public RegisterOAuth_Client(WebDriver driverhere) {
-		
+		super(driverhere);
 		this.driver=driverhere;
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[1]/header/div[2]/nav/ul/li[7]")
+	@FindBy(xpath="//li[@class='--active oxd-topbar-body-nav-tab --parent']")
 	WebElement click_Configuration;
 	
 	@FindBy(xpath="//a[text()='Register OAuth Client']/parent::li")
 	WebElement Register_OAuth_Client;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div[1]/div/button")
+	@FindBy(xpath="//button[@class='oxd-button oxd-button--medium oxd-button--secondary']")
 	WebElement addbutton;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[1]/div/div[2]/input")
+	@FindBy(xpath="(//input[@class='oxd-input oxd-input--active'])[2]")
 	WebElement OAuthCleient_Name;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[2]/div/div[2]/input")
+	@FindBy(xpath="(//input[@class='oxd-input oxd-input--active'])[3]")
 	WebElement OAuthCleient_URL;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/button[2]")
+	@FindBy(xpath="//button[@type='submit']")
 	WebElement savebutton;
+
+	By OAuthCleient_Name1 = By.xpath("(//input[@class='oxd-input oxd-input--active'])[2]");
 	
-	public LDAP_Configurationpage OAuthClient_registration() throws IOException {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
-		Properties prop = new Properties();// this method is already there in util class
+	public LDAP_Configurationpage oauthClient_registration() throws IOException {
+	    implicitlywaitmethod();
+	    Properties prop = new Properties();// this method is already there in util class
 	    FileInputStream fs =new FileInputStream(System.getProperty("user.dir")+("\\src\\testData\\GlobalInput.properties"));
 	    prop.load(fs);
 	    
@@ -47,7 +49,7 @@ public class RegisterOAuth_Client {
 	    	 click_Configuration.click();
 	    	 Register_OAuth_Client.click();
 	    	 addbutton.click();
-	    	 Thread.sleep(1000);
+	    	 Wait_Till_Link_Is_Clickable(OAuthCleient_Name1);
 	    	 
 	    	 String Add_OAuth_Client_Name = prop.getProperty("OAuth_Client_Name");				
 	    	 OAuthCleient_Name.sendKeys(Add_OAuth_Client_Name);
