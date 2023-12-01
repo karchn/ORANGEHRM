@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Module_Configuration {
+public class Module_Configuration extends AbstractMethods{
 
 	WebDriver driver;
 	public Module_Configuration(WebDriver driverhere) {
@@ -16,13 +16,13 @@ public class Module_Configuration {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[1]/header/div[2]/nav/ul/li[7]")
+	@FindBy(xpath="//li[@class='--active oxd-topbar-body-nav-tab --parent']")
 	WebElement click_Configuration;
 	
 	@FindBy(xpath="//a[text()='Modules']/parent::li")
 	WebElement Modules;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/button")
+	@FindBy(xpath="//button[@type='submit']")
 	WebElement submitbutton;
 	
 	public RegisterOAuth_Client module() {
