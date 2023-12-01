@@ -45,7 +45,7 @@ public class JobTitlepage {
 
 		Properties prop = new Properties();// this method is already there in util class
 		FileInputStream fs = new FileInputStream(
-				System.getProperty("user.dir") + ("\\src\\testData\\GlobalInput.properties"));
+		System.getProperty("user.dir") + ("\\src\\testData\\GlobalInput.properties"));
 		prop.load(fs);
 		String job_title = prop.getProperty("job_title");
 		jobtitle.sendKeys(job_title);
