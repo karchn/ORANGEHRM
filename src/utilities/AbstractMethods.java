@@ -21,7 +21,7 @@ public class AbstractMethods {
 	
 	public void Wait_Till_Link_Is_Clickable(By FindBy) {
 		
-		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(60));
+		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.elementToBeClickable(FindBy));				
 	}
 	
