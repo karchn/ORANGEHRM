@@ -32,5 +32,8 @@ public class AbstractMethods {
 		Actions ac = new Actions(driver);
 		ac.moveToElement(el).build().perform();
 	}
-	
+
+	public void implicitlywaitmethod(){
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+	}
 }
