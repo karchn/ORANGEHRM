@@ -13,7 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Localization_Configuration {
+public class Localization_Configuration extends AbstractMethods{
 
 	WebDriver driver;
 	public Localization_Configuration(WebDriver driverhere) {
@@ -22,16 +22,16 @@ public class Localization_Configuration {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[1]/header/div[2]/nav/ul/li[7]")
+	@FindBy(xpath="//li[@class='--active oxd-topbar-body-nav-tab --parent']")
 	WebElement click_Configuration;
 	
 	@FindBy(xpath="//a[text()='Localization']/parent::li")
 	WebElement Localization;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div/div/div[2]/div/div/div[2]/i")
+	@FindBy(xpath="(//i[@class='oxd-icon bi-caret-down-fill oxd-select-text--arrow'])[1]")
 	WebElement Language_Dropdown;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/div/div/div/div[2]/div/div/div[2]/i")
+	@FindBy(xpath="(//i[@class='oxd-icon bi-caret-down-fill oxd-select-text--arrow'])2]")
 	WebElement DateFormat_Dropdown;
 	
 	@FindBy(xpath="//*[text() ='yyyy-mm-dd ( 2023-11-27 )']")
@@ -40,13 +40,13 @@ public class Localization_Configuration {
 	@FindBy(xpath="//*[text() ='English (United States)']")
 	WebElement selectLanguage;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div/div/div[2]/div/div")
+	@FindBy(xpath="(//div[@class='oxd-select-text oxd-select-text--active'])[1]")
 	WebElement language;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/div/div/div/div[2]/div/div")
+	@FindBy(xpath="(//div[@class='oxd-select-text oxd-select-text--active'])[2]")
 	WebElement dateformat;
 	
-	@FindBy(xpath="//button[@class='oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space']")
+	@FindBy(xpath="//button[@type='submit']")
 	WebElement submitbutton;
 	
 	public LanguagePakages_Configuration localization() throws IOException {
@@ -56,7 +56,6 @@ public class Localization_Configuration {
 	    prop.load(fs);
 	    
           try {
-        	 // Thread.sleep(2000);
         	  click_Configuration.click();
         	  Localization.click();
         	  
