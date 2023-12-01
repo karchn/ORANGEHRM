@@ -17,7 +17,7 @@ public class GeneralInfoPage extends AbstractMethods {
 
 	WebDriver driver;
 	public GeneralInfoPage(WebDriver driverhere) {
-		
+		super(driverhere);
 		this.driver=driverhere;
 		PageFactory.initElements(driver, this);
 	}
@@ -75,7 +75,7 @@ public class GeneralInfoPage extends AbstractMethods {
 	
 	
 	public LocationsPage organization_generalInfo() throws IOException, InterruptedException {
-	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));	
+	implicitlywaitmethod();	
 	Properties prop = new Properties();// this method is already there in util class
 	FileInputStream fs = new FileInputStream(
 	System.getProperty("user.dir") + ("\\src\\testData\\GlobalInput.properties"));
