@@ -10,11 +10,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Qualification_Languages {
+public class Qualification_Languages extends AbstractMethods {
 
 	WebDriver driver;
 	public Qualification_Languages(WebDriver driverhere) {
-		
+		super(driverhere);
 		this.driver=driverhere;
 		PageFactory.initElements(driver, this);
 	}
@@ -28,14 +28,16 @@ public class Qualification_Languages {
 	@FindBy(xpath="//button[@class='oxd-button oxd-button--medium oxd-button--secondary']")
 	WebElement addbutton;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[2]/input")
+	@FindBy(xpath="//button[@class='oxd-button oxd-button--medium oxd-button--secondary']")
 	WebElement addlanguage;
 	
 	@FindBy(xpath="//button[@type='submit']")
 	WebElement saveclick;
 	
+	By addlanguage1 = By.xpath("//button[@class='oxd-button oxd-button--medium oxd-button--secondary']");
+	
 	public Qualification_Membership languagepage() throws IOException {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+		implicitlywaitmethod();
 		Properties prop = new Properties();// this method is already there in util class
 	    FileInputStream fs =new FileInputStream(System.getProperty("user.dir")+("\\src\\testData\\GlobalInput.properties"));
 	    prop.load(fs);
@@ -45,7 +47,7 @@ public class Qualification_Languages {
 		clickLanguages.click();
 		addbutton.click();
 		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(addlanguage1);
 		 String add_language = prop.getProperty("add_language");				
 		 addlanguage.sendKeys(add_language);
 		 
