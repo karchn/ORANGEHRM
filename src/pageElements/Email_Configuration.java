@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Email_Configuration {
+public class Email_Configuration extends AbstractMethods {
 
 	WebDriver driver;
 	public Email_Configuration(WebDriver driverhere) {
@@ -20,13 +20,13 @@ public class Email_Configuration {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[1]/header/div[2]/nav/ul/li[7]")
+	@FindBy(xpath="//li[@class='--active oxd-topbar-body-nav-tab --parent']")
 	WebElement click_Configuration;
 	
 	@FindBy(xpath="//a[text()='Email Configuration']/parent::li")
 	WebElement EmailConfiguration;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[1]/div/div[2]/input")
+	@FindBy(xpath="(//input[@class='oxd-input oxd-input--active'])[2]")
 	WebElement Email;
 	
 	@FindBy(xpath="(//span[@class='oxd-radio-input oxd-radio-input--active --label-right oxd-radio-input'])[1]")
@@ -38,10 +38,10 @@ public class Email_Configuration {
 	@FindBy(xpath="(//span[@class='oxd-radio-input oxd-radio-input--active --label-right oxd-radio-input'])[3]")
 	WebElement SendMail;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/div/div[1]/div/div[2]/input")
+	@FindBy(xpath="(//input[@class='oxd-input oxd-input--active'])[3]")
 	WebElement SMTPHost;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[2]/div/div[2]/div/div[2]/input")
+	@FindBy(xpath="(//input[@class='oxd-input oxd-input--active'])[4]")
 	WebElement SMTPPort;
 	
 	@FindBy(xpath="(//span[@class='oxd-radio-input oxd-radio-input--active --label-right oxd-radio-input'])[4]")
@@ -50,14 +50,20 @@ public class Email_Configuration {
 	@FindBy(xpath="(//span[@class='oxd-radio-input oxd-radio-input--active --label-right oxd-radio-input'])[5]")
 	WebElement SMTPNo;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[4]/div/div[1]/div/div[2]/input")
+	@FindBy(xpath="(//input[@class='oxd-input oxd-input--active'])[5]")
 	WebElement SMTPUser;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[4]/div/div[2]/div/div[2]/input")
+	@FindBy(xpath="(//input[@class='oxd-input oxd-input--active'])[6]")
 	WebElement SMTPPassword;
 	
 	@FindBy(xpath="//button[@type='submit']")
 	WebElement submitbutton;
+
+	By SMTP_Host = By.xpath("(//input[@class='oxd-input oxd-input--active'])[3]");
+	By Email_ID = By.xpath("(//input[@class='oxd-input oxd-input--active'])[2]");
+	By SMTP_Port = By.xpath("(//input[@class='oxd-input oxd-input--active'])[4]");
+	By SMTP_User = By.xpath("(//input[@class='oxd-input oxd-input--active'])[5]");
+	By SMTP_Password = By.xpath("(//input[@class='oxd-input oxd-input--active'])[6]");
 	
 	public Email_Subscriptions emailconfiguration() throws IOException {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
@@ -72,7 +78,7 @@ public class Email_Configuration {
 	    	String EmailID = prop.getProperty("EmailID");
 	    	Email.sendKeys(Keys.CONTROL + "a");
 	    	Email.sendKeys(Keys.DELETE);
-	    	Thread.sleep(2000);
+	    	Wait_Till_Link_Is_Clickable(Email_ID);
 	    	Email.sendKeys(EmailID);
 	    	
 	    	submitbutton.click();
@@ -90,19 +96,19 @@ public class Email_Configuration {
 	    	String EmailID = prop.getProperty("EmailID");
 	    	Email.sendKeys(Keys.CONTROL + "a");
 	    	Email.sendKeys(Keys.DELETE);
-	    	Thread.sleep(2000);
+	        Wait_Till_Link_Is_Clickable(Email_ID);
 	    	Email.sendKeys(EmailID);
 	    	
 	    	String SMTP_Host = prop.getProperty("SMTP_Host");
 	    	SMTPHost.sendKeys(Keys.CONTROL + "a");
 	    	SMTPHost.sendKeys(Keys.DELETE);
-	    	Thread.sleep(2000);
+	    	Wait_Till_Link_Is_Clickable(SMTP_Host);
 	    	SMTPHost.sendKeys(SMTP_Host);
 	    	
 	    	String SMTP_Port = prop.getProperty("SMTP_Port");
 	    	SMTPPort.sendKeys(Keys.CONTROL + "a");
 	    	SMTPPort.sendKeys(Keys.DELETE);
-	    	Thread.sleep(2000);
+	    	Wait_Till_Link_Is_Clickable(SMTP_Port);
 	    	SMTPPort.sendKeys(SMTP_Port);
 	    	
 	    	SMTPYes.click();
@@ -110,13 +116,13 @@ public class Email_Configuration {
 	    	String SMTP_User = prop.getProperty("SMTP_User");
 	    	SMTPUser.sendKeys(Keys.CONTROL + "a");
 	    	SMTPUser.sendKeys(Keys.DELETE);
-	    	Thread.sleep(2000);
+	    	Wait_Till_Link_Is_Clickable(SMTP_User);
 	    	SMTPUser.sendKeys(SMTP_User);
 	    	
 	    	String SMTP_Password = prop.getProperty("SMTP_Password");
 	    	SMTPPassword.sendKeys(Keys.CONTROL + "a");
 	    	SMTPPassword.sendKeys(Keys.DELETE);
-	    	Thread.sleep(2000);
+	    	Wait_Till_Link_Is_Clickable(SMTP_Password);
 	    	SMTPPassword.sendKeys(SMTP_Password);
 	    	
 	    	submitbutton.click();
