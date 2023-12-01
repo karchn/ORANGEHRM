@@ -17,7 +17,7 @@ public class LDAP_Configurationpage extends AbstractMethods{
 	WebDriver driver;
 
 	public LDAP_Configurationpage(WebDriver driverhere) {
-
+                 super(driverhere);
 		this.driver = driverhere;
 		PageFactory.initElements(driver, this);
 	}
@@ -82,7 +82,7 @@ public class LDAP_Configurationpage extends AbstractMethods{
 	By enabled1 = by.xpath("//span[@class='oxd-switch-input oxd-switch-input--active --label-left']");
 	public CloseBrowser config() throws IOException {
 
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+		implicitlywaitmethod();
 		Properties prop = new Properties();// this method is already there in util class
 		FileInputStream fs = new FileInputStream(
 		System.getProperty("user.dir") + ("\\src\\testData\\GlobalInput.properties"));
