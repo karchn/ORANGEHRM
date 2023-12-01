@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class EmployementStatusPage {
+public class EmployementStatusPage extends AbstractMethods{
 
 	WebDriver driver;
 	public EmployementStatusPage(WebDriver driverhere) {
@@ -31,10 +31,10 @@ public class EmployementStatusPage {
 	@FindBy(xpath="//a[text()='Employment Status']/parent::li")
 	WebElement Employementstatus;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[2]/input")
+	@FindBy(xpath="(//input[@class='oxd-input oxd-input--active'])[2]")
 	WebElement Emplyementstatus_name;
 	
-	public JobcategoriesPage Employement_Statuspage() throws IOException {
+	public JobcategoriesPage employement_Statuspage() throws IOException {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 		
 		try {
@@ -43,7 +43,7 @@ public class EmployementStatusPage {
 		clickonadd.click();
 		Emplyementstatus_name.click();
 		
-		Properties prop = new Properties();// this method is already there in util class
+	    Properties prop = new Properties();// this method is already there in util class
 	    FileInputStream fs =new FileInputStream(System.getProperty("user.dir")+("\\src\\testData\\GlobalInput.properties"));
 	    prop.load(fs);
 	    String Employement_status = prop.getProperty("Employement_status");				
