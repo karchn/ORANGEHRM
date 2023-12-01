@@ -9,11 +9,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class StructurePage {
+public class StructurePage extends AbstractMethods{
 
 	WebDriver driver;
 	public StructurePage(WebDriver driverhere) {
-		
+		super(driverhere);
 		this.driver=driverhere;
 		PageFactory.initElements(driver, this);
 	}
@@ -38,13 +38,13 @@ public class StructurePage {
 	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div/div/div/form/div[3]/div/div[2]/textarea")
 	WebElement Description;
 	
-	@FindBy(xpath="//button[@class='oxd-button oxd-button--medium oxd-button--secondary orangehrm-left-space']")
+	@FindBy(xpath="//button[@type='submit']")
 	WebElement savebutton;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div/div/div/form/div[2]/div/span")
+	@FindBy(xpath="//span[@class='oxd-text oxd-text--span oxd-input-field-error-message oxd-input-group__message']")
 	WebElement message;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div/div/div/form/div[4]/button[1]")
+	@FindBy(xpath="//button[@type='button']")
 	WebElement cancelbutton;
 	
 	public Qualification_Skillspage structurepage() throws IOException {
@@ -62,9 +62,6 @@ public class StructurePage {
 		
 		String Unit_Identification = prop.getProperty("Unit_Identification");
 		UnitIdentification.sendKeys(Unit_Identification);		
-//		
-//		String Unit_Name = prop.getProperty("Unit_Name");
-//		name.sendKeys(Unit_Name);
 
 		cancelbutton.click();	
 
