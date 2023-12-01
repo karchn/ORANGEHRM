@@ -11,7 +11,7 @@ public class Module_Configuration extends AbstractMethods{
 
 	WebDriver driver;
 	public Module_Configuration(WebDriver driverhere) {
-		
+		super(driverhere);
 		this.driver=driverhere;
 		PageFactory.initElements(driver, this);
 	}
@@ -26,7 +26,7 @@ public class Module_Configuration extends AbstractMethods{
 	WebElement submitbutton;
 	
 	public RegisterOAuth_Client module() {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+		implicitlywaitmethod();
 		click_Configuration.click();
 		try {
 		Modules.click();
