@@ -10,11 +10,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Qualification_Membership {
+public class Qualification_Membership extends AbstractMethods{
 
 	WebDriver driver;
 	public Qualification_Membership(WebDriver driverhere) {
-		
+		super(driverhere);
 		this.driver=driverhere;
 		PageFactory.initElements(driver, this);
 	}
@@ -28,15 +28,15 @@ public class Qualification_Membership {
 	@FindBy(xpath="//button[@class='oxd-button oxd-button--medium oxd-button--secondary']")
 	WebElement addbutton;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[2]/input")
+	@FindBy(xpath="(//input[@class='oxd-input oxd-input--active'])[2]")
 	WebElement addMembershipname;
 	
 	@FindBy(xpath="//button[@type='submit']")
 	WebElement saveclick;
 	
-
-	public Nationalities Membershippage() throws IOException {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+        By addMembershipname1 = By.xpath("(//input[@class='oxd-input oxd-input--active'])[2]");
+	public Nationalities membershippage() throws IOException {
+		implicitlywaitmethod();
 		Properties prop = new Properties();// this method is already there in util class
 	    FileInputStream fs =new FileInputStream(System.getProperty("user.dir")+("\\src\\testData\\GlobalInput.properties"));
 	    prop.load(fs);
@@ -46,7 +46,7 @@ public class Qualification_Membership {
 		clickMemberships.click();
 		addbutton.click();
 		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(addMembershipname1);
 		 String add_membership_name = prop.getProperty("add_membership_name");				
 		 addMembershipname.sendKeys(add_membership_name);
 		 
