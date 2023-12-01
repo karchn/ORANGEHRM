@@ -14,7 +14,7 @@ public class Email_Subscriptions extends AbstractMethods {
 
 	WebDriver driver;
 	public Email_Subscriptions(WebDriver driverhere) {
-		
+		super(driverhere);
 		this.driver=driverhere;
 		PageFactory.initElements(driver, this);
 	}
@@ -72,7 +72,7 @@ public class Email_Subscriptions extends AbstractMethods {
 	By confirm_delete = By.xpath=("(//button[@class='oxd-button oxd-button--medium oxd-button--label-danger orangehrm-button-margin'])[1]";
 	
 	public Localization_Configuration emailsubscription() throws IOException, InterruptedException {
-	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	implicitlywaitmethod();
 	Properties prop = new Properties();// this method is already there in util class
 	FileInputStream fs =new FileInputStream(System.getProperty("user.dir")+("\\src\\testData\\GlobalInput.properties"));
 	prop.load(fs);
