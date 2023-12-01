@@ -31,7 +31,7 @@ public class JobcategoriesPage {
 	@FindBy(xpath="//a[text()='Job Categories']/parent::li")
 	WebElement Jobcategories;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[2]/input")
+	@FindBy(xpath="(//input[@class='oxd-input oxd-input--active'])[2]")
 	WebElement Jobcategories_name;
 	
 	public WorkShiftPage Job_Categories() throws IOException {
@@ -43,7 +43,7 @@ public class JobcategoriesPage {
 		clickonadd.click();
 		Jobcategories_name.click();
 		
-		Properties prop = new Properties();// this method is already there in util class
+	    Properties prop = new Properties();// this method is already there in util class
 	    FileInputStream fs =new FileInputStream(System.getProperty("user.dir")+("\\src\\testData\\GlobalInput.properties"));
 	    prop.load(fs);
 	    String Jobcategoriesname = prop.getProperty("Jobcategoriesname");				
