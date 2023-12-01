@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Email_Subscriptions {
+public class Email_Subscriptions extends AbstractMethods {
 
 	WebDriver driver;
 	public Email_Subscriptions(WebDriver driverhere) {
@@ -19,7 +19,7 @@ public class Email_Subscriptions {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[1]/header/div[2]/nav/ul/li[7]")
+	@FindBy(xpath="//li[@class='--active oxd-topbar-body-nav-tab --parent']")
 	WebElement click_Configuration;
 	
 	@FindBy(xpath="//a[text()='Email Subscriptions']/parent::li")
@@ -40,48 +40,54 @@ public class Email_Subscriptions {
 	@FindBy(xpath="(//button[@class='oxd-icon-button oxd-table-cell-action-space'])[5]")
 	WebElement LeaveRejections;
 		
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div[1]/div/button")
+	@FindBy(xpath="//button[@class='oxd-button oxd-button--medium oxd-button--secondary']")
 	WebElement addbutton;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div/div/div/form/div[1]/div/div[2]/input")
+	@FindBy(xpath="(//input[@class='oxd-input oxd-input--active'])[2]")
 	WebElement addname;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div/div/div/form/div[2]/div/div[2]/input")
+	@FindBy(xpath="(//input[@class='oxd-input oxd-input--active'])[3]")
 	WebElement email;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div/div/div/form/div[3]/button[2]")
+	@FindBy(xpath="//button[@type='submit']")
 	WebElement savebutton;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div/div/div/form/div[3]/button[1]")
+	@FindBy(xpath="(//button[@type='button'])[4]")
 	WebElement cancelbutton;
 	
 	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div/div/div/form/div[2]/div/span")
 	WebElement message;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div[3]/div/div[2]/div/div/div[4]/div/button[1]")
+	@FindBy(xpath="(//button[@class='oxd-icon-button oxd-table-cell-action-space'])[1]")
 	WebElement deletebutton;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[3]/div/div/div/div[3]/button[2]")
+	@FindBy(xpath="(//button[@class='oxd-button oxd-button--medium oxd-button--label-danger orangehrm-button-margin'])[1]")
 	WebElement confirmdelete;
 	
+	By delete_button = By.xpath="(//button[@class='oxd-icon-button oxd-table-cell-action-space'])[1]";
+	By Leave_Approvals = By.xpath="(//button[@class='oxd-icon-button oxd-table-cell-action-space'])[2]";
+	By Leave_Assignments = By.xpath="(//button[@class='oxd-icon-button oxd-table-cell-action-space'])[3]";
+	By Leave_Cancellations = By.xpath="(//button[@class='oxd-icon-button oxd-table-cell-action-space'])[4]";
+	By Leave_Rejections = By.xpath="(//button[@class='oxd-icon-button oxd-table-cell-action-space'])[5]";
+	By confirm_delete = By.xpath="(//button[@class='oxd-button oxd-button--medium oxd-button--label-danger orangehrm-button-margin'])[1]";
 	
 	public Localization_Configuration emailsubscription() throws IOException, InterruptedException {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		Properties prop = new Properties();// this method is already there in util class
-	    FileInputStream fs =new FileInputStream(System.getProperty("user.dir")+("\\src\\testData\\GlobalInput.properties"));
-	    prop.load(fs);
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	Properties prop = new Properties();// this method is already there in util class
+	FileInputStream fs =new FileInputStream(System.getProperty("user.dir")+("\\src\\testData\\GlobalInput.properties"));
+	prop.load(fs);
 	    
 	    try {
 	    	
 	    	click_Configuration.click();
 	    	EmailSubscriptions.click();
 	    	Leaveapplication.click();
-	    	Thread.sleep(2000);
+	    	Wait_Till_Link_Is_Clickable(delete_button);
 	    	
 	    	try {
 	    	deletebutton.click();
+		Wait_Till_Link_Is_Clickable(confirm_delete);
 	    	confirmdelete.click();
-	    	Thread.sleep(2000);
 	    	}
 	    	catch(Exception e) {
 	    		
@@ -91,21 +97,10 @@ public class Email_Subscriptions {
 	    	String Subscriber_name = prop.getProperty("Subscriber_name");
 	    	addname.sendKeys(Subscriber_name);
 	    	
-	    	Thread.sleep(1000);
-	    	
 	    	String EmailID = prop.getProperty("EmailID");
 	    	email.sendKeys(EmailID);
 	    	
-	    	Thread.sleep(1000);
-	    	
-			
-//	    	if((message.getText()).equalsIgnoreCase("Already exists")) {
-//		    System.out.println("Email ID alreay exists");
-//			cancelbutton.click();	
-//			}
-//	    	
-//			else {
-				savebutton.click();
+		savebutton.click();
 	
 	    }
 	    catch(Exception e) {
@@ -113,17 +108,18 @@ public class Email_Subscriptions {
 	    }
 	    
 		driver.navigate().back();
-		Thread.sleep(1000);
+		Wait_Till_Link_Is_Clickable(Leave_Approvals);
 		
 		 try {
 		    
-			 LeaveApprovals.click();
-		    	Thread.sleep(1000);
+			LeaveApprovals.click();
+		    	Wait_Till_Link_Is_Clickable(delete_button);
 		    	
 		    	try {
 			    	deletebutton.click();
+				Wait_Till_Link_Is_Clickable(confirm_delete);
 			    	confirmdelete.click();
-			    	Thread.sleep(2000);
+			    	
 			    	}
 			    	catch(Exception e) {
 			    		
@@ -133,31 +129,28 @@ public class Email_Subscriptions {
 		    	String Subscriber_name = prop.getProperty("Subscriber_name");
 		    	addname.sendKeys(Subscriber_name);
 		    	
-		    	Thread.sleep(1000);
-		    	
 		    	String EmailID = prop.getProperty("EmailID");
 		    	email.sendKeys(EmailID);
-		    	
-		    	Thread.sleep(1000);		    	
-
-					savebutton.click();						
+		    	 	
+			savebutton.click();						
 		    }
 		    catch(Exception e) {
 		    	System.out.println("I am in exception block of leave approval in email subscription tab");
 		    }
 		 
 		    driver.navigate().back();
-			Thread.sleep(1000);
+		    Wait_Till_Link_Is_Clickable(Leave_Assignments);
 			
 			 try {
 			    
 				 LeaveAssignments.click();
-			    	Thread.sleep(1000);
+			    	 Wait_Till_Link_Is_Clickable(delete_button);
 			    	
 			    	try {
 				    	deletebutton.click();
+					Wait_Till_Link_Is_Clickable(confirm_delete);
 				    	confirmdelete.click();
-				    	Thread.sleep(2000);
+				    	
 				    	}
 				    	catch(Exception e) {
 				    		
@@ -167,15 +160,10 @@ public class Email_Subscriptions {
 			    	String Subscriber_name = prop.getProperty("Subscriber_name");
 			    	addname.sendKeys(Subscriber_name);
 			    	
-			    	Thread.sleep(1000);
 			    	
 			    	String EmailID = prop.getProperty("EmailID");
 			    	email.sendKeys(EmailID);
-			    	
-			    	Thread.sleep(1000);
-		    	
-
-						savebutton.click();					
+	                        savebutton.click();					
 		
 			    }
 			    catch(Exception e) {
@@ -183,17 +171,18 @@ public class Email_Subscriptions {
 			    }
 		 
 			    driver.navigate().back();
-				Thread.sleep(1000);
+			    Wait_Till_Link_Is_Clickable(Leave_Cancellations);
 				
 				 try {
 				    
-					    LeaveCancellations.click();
-				    	Thread.sleep(1000);
+					LeaveCancellations.click();
+				    	Wait_Till_Link_Is_Clickable(delete_button);
 				    	
 				    	try {
 					    	deletebutton.click();
+						Wait_Till_Link_Is_Clickable(confirm_delete);
 					    	confirmdelete.click();
-					    	Thread.sleep(2000);
+					    	
 					    	}
 					    	catch(Exception e) {
 					    		
@@ -203,31 +192,29 @@ public class Email_Subscriptions {
 				    	String Subscriber_name = prop.getProperty("Subscriber_name");
 				    	addname.sendKeys(Subscriber_name);
 				    	
-				    	Thread.sleep(1000);
 				    	
 				    	String EmailID = prop.getProperty("EmailID");
 				    	email.sendKeys(EmailID);
-				    	
-				    	Thread.sleep(1000);
 
-							savebutton.click();							
+					savebutton.click();							
 				    }
 				    catch(Exception e) {
 				    	System.out.println("I am in exception block of Leave Cancellations in email subscription tab");
 				    }
 				 
 				    driver.navigate().back();
-					Thread.sleep(1000);
+				    Wait_Till_Link_Is_Clickable(Leave_Rejections);
 					
 					 try {
 					    
-						    LeaveRejections.click();
-					    	Thread.sleep(1000);
+						LeaveRejections.click();
+					    	Wait_Till_Link_Is_Clickable(delete_button);
 					    	
 					    	try {
 						    	deletebutton.click();
+							Wait_Till_Link_Is_Clickable(confirm_delete);
 						    	confirmdelete.click();
-						    	Thread.sleep(2000);
+						    	
 						    	}
 						    	catch(Exception e) {
 						    		
@@ -237,14 +224,11 @@ public class Email_Subscriptions {
 					    	String Subscriber_name = prop.getProperty("Subscriber_name");
 					    	addname.sendKeys(Subscriber_name);
 					    	
-					    	Thread.sleep(1000);
 					    	
 					    	String EmailID = prop.getProperty("EmailID");
 					    	email.sendKeys(EmailID);
-					    	
-					    	Thread.sleep(1000);
-
-								savebutton.click();						
+					    
+						savebutton.click();						
 					    }
 					    catch(Exception e) {
 					    	System.out.println("I am in exception block of Leave Rejections in email subscription tab");
