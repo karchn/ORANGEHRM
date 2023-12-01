@@ -14,7 +14,7 @@ public class Qualification_EducationPage extends AbstractMethods{
 
 	WebDriver driver;
 	public Qualification_EducationPage(WebDriver driverhere) {
-		
+		super(driverhere);
 		this.driver=driverhere;
 		PageFactory.initElements(driver, this);
 	}
@@ -37,7 +37,7 @@ public class Qualification_EducationPage extends AbstractMethods{
 	By addEduLevel1= By.xpath("(//input[@class='oxd-input oxd-input--active'])[2]");
 	
 	public Qualification_Licenses educationPage() throws IOException {
-	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+	implicitlywaitmethod();
 	Properties prop = new Properties();// this method is already there in util class
 	FileInputStream fs =new FileInputStream(System.getProperty("user.dir")+("\\src\\testData\\GlobalInput.properties"));
 	prop.load(fs);
