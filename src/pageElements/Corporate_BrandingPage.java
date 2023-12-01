@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Corporate_BrandingPage extends AbstractMethod {
+public class Corporate_BrandingPage extends AbstractMethods {
 
 	WebDriver driver;
 	public Corporate_BrandingPage(WebDriver driverhere) {
