@@ -14,7 +14,7 @@ public class JobcategoriesPage {
 
 	WebDriver driver;
 	public JobcategoriesPage(WebDriver driverhere) {
-		
+		super(driverhere);
 		this.driver=driverhere;
 		PageFactory.initElements(driver, this);
 	}
@@ -35,7 +35,7 @@ public class JobcategoriesPage {
 	WebElement Jobcategories_name;
 	
 	public WorkShiftPage Job_Categories() throws IOException {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+		implicitlywaitmethod();
 		
 		try {
 		click_job.click();
