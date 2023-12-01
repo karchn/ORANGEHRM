@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Corporate_BrandingPage {
+public class Corporate_BrandingPage extends AbstractMethod {
 
 	WebDriver driver;
 	public Corporate_BrandingPage(WebDriver driverhere) {
@@ -34,11 +34,24 @@ public class Corporate_BrandingPage {
 	
 	@FindBy(xpath="(//button[@class='oxd-button oxd-button--medium oxd-button--ghost'])[1]")
 	WebElement resetToDefault;
-	
-	@FindBy(xpath="//button[@class='oxd-button oxd-button--medium oxd-button--secondary']")
-	WebElement clickonpublish;
 
-	public Email_Configuration CorporateBrandingPage() throws IOException, InterruptedException {
+	@FindBy(xpath="//button[@class='oxd-button oxd-button--medium oxd-button--secondary']")
+	WebElement clickonpublish; 
+	
+	@FindBy(xpath="(//div[@class='oxd-file-button'])[1]")
+	WebElement addClientLogo1;
+
+	@FindBy(xpath="(//div[@class='oxd-file-button'])[2]")
+	WebElement addClientBanner1;
+
+	@FindBy(xpath="(//div[@class='oxd-file-button'])[3]")
+	WebElement addLoginBanner1;
+
+	By add_ClientLogo1 = By.xpath("(//div[@class='oxd-file-button'])[1]");
+	By add_ClientBanner1 = By.xpath("(//div[@class='oxd-file-button'])[2]");
+	By add_LoginBanner1 = By.xpath("(//div[@class='oxd-file-button'])[3]");
+	
+	public Email_Configuration corporateBrandingPage() throws IOException, InterruptedException {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 		Properties prop = new Properties();// this method is already there in util class
 	    FileInputStream fs =new FileInputStream(System.getProperty("user.dir")+("\\src\\testData\\GlobalInput.properties"));
@@ -47,21 +60,15 @@ public class Corporate_BrandingPage {
 	    try {
 	    click_Corporate_Branding.click();
 	    resetToDefault.click();
-	    Thread.sleep(4000);
+	    Wait_Till_Link_Is_Clickable(add_ClientLogo1);
 	    
 	    
-	    WebElement addClientLogo1 =driver.findElement(By.xpath("(//div[@class='oxd-file-button'])[1]"));	  
-	    addClientLogo1.sendKeys(System.getProperty("user.dir")+"\\src\\testData\\Client_logo.png");
-	    Thread.sleep(2000);
-	    
-	    WebElement addClientBanner1 =driver.findElement(By.xpath("(//div[@class='oxd-file-button'])[2]"));	  
+	    addClientLogo1.sendKeys(System.getProperty("user.dir")+"\\src\\testData\\Client_logo.png");	  
+	    Wait_Till_Link_Is_Clickable(add_ClientBanner1);   	    
 	    addClientBanner1.sendKeys(System.getProperty("user.dir")+"\\src\\testData\\Cient_Banner.png");
-	    Thread.sleep(2000);
-	    
-	    WebElement addLoginBanner1 =driver.findElement(By.xpath("(//div[@class='oxd-file-button'])[3]"));	  
+	    Wait_Till_Link_Is_Clickable(add_LoginBanner1);
 	    addLoginBanner1.sendKeys(System.getProperty("user.dir")+"\\src\\testData\\Login_Banner.png");
-	    Thread.sleep(2000);
-
+	   
 	    clickonpublish.click();
 	    }
 	    catch(Exception e) {
