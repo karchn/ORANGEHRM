@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LanguagePakages_Configuration {
+public class LanguagePakages_Configuration extends AbstractMethods{
 
 	WebDriver driver;
 	public LanguagePakages_Configuration(WebDriver driverhere) {
@@ -20,23 +20,27 @@ public class LanguagePakages_Configuration {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[1]/header/div[2]/nav/ul/li[7]")
+	@FindBy(xpath="//li[@class='--active oxd-topbar-body-nav-tab --parent']")
 	WebElement click_Configuration;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[1]/header/div[2]/nav/ul/li[7]/ul/li[4]")
+	@FindBy(xpath="//a[text()='Language Packages']/parent::li")
 	WebElement Language_Packages;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div[1]/div/button")
+	@FindBy(xpath="//button[@class='oxd-button oxd-button--medium oxd-button--secondary']")
 	WebElement addLanguage;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div/div/div/form/div[1]/div/div[2]/div/div/div[2]/i")
+	@FindBy(xpath="//i[@class='oxd-icon bi-caret-down-fill oxd-select-text--arrow']")
 	WebElement Languagename_Dropdown;
 	
 	@FindBy(xpath="//*[text() ='English (India)']")
 	WebElement selectname;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div/div/div/form/div[3]/button[1]")
+	@FindBy(xpath="//button[@type='submit']")
 	WebElement submitbutton;
+
+	By click_Configuration1 = By.xpath("//li[@class='--active oxd-topbar-body-nav-tab --parent']");
+	By addLanguage1 = By.xpath("//button[@class='oxd-button oxd-button--medium oxd-button--secondary']");
+	By Languagename_Dropdown1 = By.xpath("//i[@class='oxd-icon bi-caret-down-fill oxd-select-text--arrow']");
 	
 	public Module_Configuration language_pakage() throws IOException {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
@@ -45,14 +49,14 @@ public class LanguagePakages_Configuration {
 	    prop.load(fs);
 	    
           try {
-        	  Thread.sleep(2000);
+        	  Wait_Till_Link_Is_Clickable(click_Configuration1);
         	  click_Configuration.click();
         	  Language_Packages.click();
         	  
-        	  Thread.sleep(3000);
+        	 Wait_Till_Link_Is_Clickable(addLanguage1);
         	  addLanguage.click();
         	  Languagename_Dropdown.click();
-        	  Thread.sleep(2000);
+        	   Wait_Till_Link_Is_Clickable(Languagename_Dropdown1);
         	 
         	 String language = prop.getProperty("language");
         	 WebElement name= driver.findElement(By.xpath("//*[text() ='"+language+"']"));
