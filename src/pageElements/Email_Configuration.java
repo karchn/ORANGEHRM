@@ -15,7 +15,7 @@ public class Email_Configuration extends AbstractMethods {
 
 	WebDriver driver;
 	public Email_Configuration(WebDriver driverhere) {
-		
+		super(driverhere);
 		this.driver=driverhere;
 		PageFactory.initElements(driver, this);
 	}
@@ -66,7 +66,7 @@ public class Email_Configuration extends AbstractMethods {
 	By SMTP_Password = By.xpath("(//input[@class='oxd-input oxd-input--active'])[6]");
 	
 	public Email_Subscriptions emailconfiguration() throws IOException {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+		implicitlywaitmethod();
 		Properties prop = new Properties();// this method is already there in util class
 	    FileInputStream fs =new FileInputStream(System.getProperty("user.dir")+("\\src\\testData\\GlobalInput.properties"));
 	    prop.load(fs);
