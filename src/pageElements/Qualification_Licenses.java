@@ -10,11 +10,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Qualification_Licenses {
+public class Qualification_Licenses extends AbstractMethods{
 
 	WebDriver driver;
 	public Qualification_Licenses(WebDriver driverhere) {
-		
+		super(driverhere);
 		this.driver=driverhere;
 		PageFactory.initElements(driver, this);
 	}
@@ -28,14 +28,16 @@ public class Qualification_Licenses {
 	@FindBy(xpath="//button[@class='oxd-button oxd-button--medium oxd-button--secondary']")
 	WebElement addbutton;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[2]/input")
+	@FindBy(xpath="//input[@class='oxd-input oxd-input--active']")
 	WebElement addlicensesname;
 	
 	@FindBy(xpath="//button[@type='submit']")
 	WebElement saveclick;
 
+	By addlicensesname1= By.xpath("//input[@class='oxd-input oxd-input--active']");
+	
 	public Qualification_Languages licensespage() throws IOException {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+		implicitlywaitmethod();
 		Properties prop = new Properties();// this method is already there in util class
 	    FileInputStream fs =new FileInputStream(System.getProperty("user.dir")+("\\src\\testData\\GlobalInput.properties"));
 	    prop.load(fs);
@@ -45,7 +47,7 @@ public class Qualification_Licenses {
 		clickLicenses.click();
 		addbutton.click();
 		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(addlicensesname1);
 		 String license_name = prop.getProperty("license_name");				
 		 addlicensesname.sendKeys(license_name);
 		 
