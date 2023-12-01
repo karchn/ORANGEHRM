@@ -47,7 +47,6 @@ public class AdminFlow extends Basetest{
 		vp = lp.enterlogindetails(username, password);
 
 		// UserManagement_page
-		Thread.sleep(3000);
 		vp.clickonadmin();
 		vp.adduser();
 		jp = vp.system_user();
