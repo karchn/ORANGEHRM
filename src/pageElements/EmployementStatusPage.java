@@ -14,7 +14,7 @@ public class EmployementStatusPage extends AbstractMethods{
 
 	WebDriver driver;
 	public EmployementStatusPage(WebDriver driverhere) {
-		
+		super(driverhere);
 		this.driver=driverhere;
 		PageFactory.initElements(driver, this);
 	}
@@ -35,7 +35,7 @@ public class EmployementStatusPage extends AbstractMethods{
 	WebElement Emplyementstatus_name;
 	
 	public JobcategoriesPage employement_Statuspage() throws IOException {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+		implicitlywaitmethod();
 		
 		try {
 		click_job.click();
