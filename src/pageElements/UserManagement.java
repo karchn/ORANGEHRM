@@ -115,7 +115,7 @@ public class UserManagement extends AbstractMethods{
 	  @FindBy(xpath="//button[@type='submit']")
 	  WebElement searchbutton;
 	  
-	   public JobTitlepage System_user() throws InterruptedException {
+	   public JobTitlepage system_user() throws InterruptedException {
 		 implicitlywaitmethod();
 		
 		   try {
