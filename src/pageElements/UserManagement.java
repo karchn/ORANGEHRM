@@ -20,7 +20,7 @@ public class UserManagement extends AbstractMethods{
 		
 	}
 
-	@FindBy(xpath="(//a[@class='oxd-main-menu-item'])[1]")
+	   @FindBy(xpath="(//a[@class='oxd-main-menu-item'])[1]")
 	   WebElement Admin;
 	   
 	   @FindBy(xpath="//button[@class='oxd-button oxd-button--medium oxd-button--secondary']")
@@ -52,7 +52,7 @@ public class UserManagement extends AbstractMethods{
 	  WebElement Employeename;
 	   
 	  
-	  @FindBy(xpath="//body/div[@id='app']/div[1]/div[2]/div[2]/div[1]/div[1]/form[1]/div[1]/div[1]/div[4]/div[1]/div[2]/input[1]")
+	  @FindBy(xpath="(//input[@class='oxd-input oxd-input--active'])[2]")
 	  WebElement username;
 	  
 	  @FindBy(xpath="//button[@type='submit']")
@@ -116,7 +116,7 @@ public class UserManagement extends AbstractMethods{
 	  WebElement searchbutton;
 	  
 	   public JobTitlepage System_user() throws InterruptedException {
-		   driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
+		 implicitlywaitmethod();
 		
 		   try {
 		   systemusername.sendKeys("archana");
