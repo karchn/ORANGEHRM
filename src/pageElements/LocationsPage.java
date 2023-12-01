@@ -17,7 +17,7 @@ public class LocationsPage extends AbstractMethods{
 
 	WebDriver driver;
 	public LocationsPage(WebDriver driverhere) {
-		
+		super(driverhere);
 		this.driver=driverhere;
 		PageFactory.initElements(driver, this);
 	}
@@ -74,7 +74,7 @@ public class LocationsPage extends AbstractMethods{
 	WebElement clicksearch;
 	
 	public StructurePage locations() throws IOException, InterruptedException {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));	
+		implicitlywaitmethod();
 		Properties prop = new Properties();// this method is already there in util class
 		FileInputStream fs = new FileInputStream(
 		System.getProperty("user.dir") + ("\\src\\testData\\GlobalInput.properties"));
