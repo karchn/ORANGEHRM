@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class PayGradePage {
+public class PayGradePage extends AbstractMethods{
 
 	WebDriver driver;
 
@@ -54,7 +54,6 @@ public class PayGradePage {
 			catch(Exception e) {
 				
 			}
-			Thread.sleep(1000);
 			savebutton.click();
 		} 
 		catch (Exception e) {
