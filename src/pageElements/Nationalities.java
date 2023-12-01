@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Nationalities {
+public class Nationalities extends AbstractMethods {
 
 	WebDriver driver;
 	public Nationalities(WebDriver driverhere) {
@@ -25,12 +25,14 @@ public class Nationalities {
 	@FindBy(xpath="//button[@class='oxd-button oxd-button--medium oxd-button--secondary']")
 	WebElement addbutton;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[2]/input")
+	@FindBy(xpath="(//input[@class='oxd-input oxd-input--active'])[2]")
 	WebElement addnationalityname;
 	
 	@FindBy(xpath="//button[@type='submit']")
 	WebElement saveclick;
 
+	By addnationalityname1 = By.xpath("(//input[@class='oxd-input oxd-input--active'])[2]");
+	
 	public Corporate_BrandingPage nationalities() throws IOException {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 		Properties prop = new Properties();// this method is already there in util class
@@ -41,7 +43,7 @@ public class Nationalities {
 	    click_Nationalities.click();
 		addbutton.click();
 		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(addnationalityname1);
 		 String Nationality_name = prop.getProperty("Nationality_name");				
 		 addnationalityname.sendKeys(Nationality_name);
 		 
