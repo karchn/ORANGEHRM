@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class Qualification_EducationPage {
+public class Qualification_EducationPage extends AbstractMethods{
 
 	WebDriver driver;
 	public Qualification_EducationPage(WebDriver driverhere) {
@@ -28,24 +28,26 @@ public class Qualification_EducationPage {
 	@FindBy(xpath="//button[@class='oxd-button oxd-button--medium oxd-button--secondary']")
 	WebElement addbutton;
 	
-	@FindBy(xpath="//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div/div[2]/input")
+	@FindBy(xpath="(//input[@class='oxd-input oxd-input--active'])[2]")
 	WebElement addEduLevel;
 	
 	@FindBy(xpath="//button[@type='submit']")
 	WebElement saveclick;
+
+	By addEduLevel1= By.xpath("(//input[@class='oxd-input oxd-input--active'])[2]");
 	
-	public Qualification_Licenses EducationPage() throws IOException {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
-		Properties prop = new Properties();// this method is already there in util class
-	    FileInputStream fs =new FileInputStream(System.getProperty("user.dir")+("\\src\\testData\\GlobalInput.properties"));
-	    prop.load(fs);
+	public Qualification_Licenses educationPage() throws IOException {
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+	Properties prop = new Properties();// this method is already there in util class
+	FileInputStream fs =new FileInputStream(System.getProperty("user.dir")+("\\src\\testData\\GlobalInput.properties"));
+	prop.load(fs);
 	    
 	    try {
 		click_Qualifications.click();
 		clickEducation.click();
 		addbutton.click();
 		
-		Thread.sleep(2000);
+		Wait_Till_Link_Is_Clickable(addEduLevel1);
 		 String add_education_level = prop.getProperty("add_education_level");				
 		 addEduLevel.sendKeys(add_education_level);
 		 
