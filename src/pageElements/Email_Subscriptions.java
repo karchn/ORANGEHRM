@@ -64,12 +64,12 @@ public class Email_Subscriptions extends AbstractMethods {
 	@FindBy(xpath="(//button[@class='oxd-button oxd-button--medium oxd-button--label-danger orangehrm-button-margin'])[1]")
 	WebElement confirmdelete;
 	
-	By delete_button = By.xpath="(//button[@class='oxd-icon-button oxd-table-cell-action-space'])[1]";
-	By Leave_Approvals = By.xpath="(//button[@class='oxd-icon-button oxd-table-cell-action-space'])[2]";
-	By Leave_Assignments = By.xpath="(//button[@class='oxd-icon-button oxd-table-cell-action-space'])[3]";
-	By Leave_Cancellations = By.xpath="(//button[@class='oxd-icon-button oxd-table-cell-action-space'])[4]";
-	By Leave_Rejections = By.xpath="(//button[@class='oxd-icon-button oxd-table-cell-action-space'])[5]";
-	By confirm_delete = By.xpath="(//button[@class='oxd-button oxd-button--medium oxd-button--label-danger orangehrm-button-margin'])[1]";
+	By delete_button = By.xpath=("(//button[@class='oxd-icon-button oxd-table-cell-action-space'])[1]");
+	By Leave_Approvals = By.xpath=("(//button[@class='oxd-icon-button oxd-table-cell-action-space'])[2]");
+	By Leave_Assignments = By.xpath=("(//button[@class='oxd-icon-button oxd-table-cell-action-space'])[3]");
+	By Leave_Cancellations = By.xpath=("(//button[@class='oxd-icon-button oxd-table-cell-action-space'])[4]");
+	By Leave_Rejections = By.xpath=("(//button[@class='oxd-icon-button oxd-table-cell-action-space'])[5]");
+	By confirm_delete = By.xpath=("(//button[@class='oxd-button oxd-button--medium oxd-button--label-danger orangehrm-button-margin'])[1]";
 	
 	public Localization_Configuration emailsubscription() throws IOException, InterruptedException {
 	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
